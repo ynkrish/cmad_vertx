@@ -1,4 +1,15 @@
 {
-	"Name": "Jane Doe",
-	"Age": 38
+    "id": "5710cc12577eea32e80282b3",
+    "userName": "kyechcha",
+    "first": "Krishnan",
+    "last": "Yechchan",
+    "email": "kyechcha@cisco.com",
+    "siteId": null,
+    "password": "Cisco_123",
+    "companyId": null,
+    "deptId": null,
+    "companyName": null,
+    "subdomain": null,
+    "deptName": null,
+    "isCompany": null
 }

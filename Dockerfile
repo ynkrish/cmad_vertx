@@ -1,7 +1,7 @@
 FROM vertx/vertx3
 
 #Environment variables
-ENV VERTICLE_NAME 
+ENV VERTICLE_NAME com.krish.cmad.RestResponderVerticle
 ENV VERTICLE_FILE target/
 
 ENV VERTICLE_HOME /usr/verticles
