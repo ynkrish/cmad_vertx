@@ -90,6 +90,8 @@ public class RestResponderVerticle extends AbstractVerticle {
 	    	User user = dto.toModel();
 	    	
 	    	//Store to DB - how to handle exceptions here ?
+	    	//TODO - Move below code to worker thread
+	    	
 	    	Key<User> usr = store.save(user);
 	    	
 	    	System.out.println("POST success, ID: " + usr.getId() + " Thread :" +  Thread.currentThread().getId());
@@ -118,9 +120,15 @@ public class RestResponderVerticle extends AbstractVerticle {
 	    }).listen(8080);
 	    */
 	    
-	    //below is again a JDK 8 syntax which is equivalent to above code - did not fully understand the
+	    //below is again a JDK 8 syntax which is equivalent or more to above code - did not fully understand the
 	    //router::accept - but it conveys the same as above implementation
-	    server.requestHandler(router::accept).listen(8080);
+	    server.requestHandler(router::accept).listen(8080, result -> {
+	    	if (result.succeeded()) {
+	    		startFuture.complete();
+	    	} else {
+	    		startFuture.fail(result.cause());
+	    	}
+	    });
 	  
 	}
 
